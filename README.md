@@ -63,6 +63,9 @@ In detail, for each point (x,y,w) in the reversed list:
 5. If (x,y) is not less than (x1,y1), the algorithm proceeds to the next point.
   Once the maximum chain weight for the point (x,y) is finalized (after considering all points that come after it in the reversed list), the algorithm moves to the next point in the reversed list.
   Finally, the algorithm returns the overall maximum chain weight (which is the maximum of all maximum chain weights for individual points) and the dictionary that stores the maximum chain weight for each point in the list.
+  
+![algorithm_visualization](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/f9d703d6-2a77-4b22-961c-1d7e0b1b637d)
+
 
 ## Time and Space Complexity Analysis:
 The algorithm has a time complexity of O(n^2), where n is the number of points. This is because there are two nested loops: the outer loop runs n times and the inner loop can also run up to n times in the worst case. 
@@ -84,8 +87,8 @@ ranked_input={
 }
 
 This is a visualization of one of the heaviest chains for this input:
+
 ![image](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/14229b0e-f641-4efd-9a94-53c34b1681f1)
-![algorithm_visualization](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/f9d703d6-2a77-4b22-961c-1d7e0b1b637d)
 
 
 # Naive approach to solving the main problem-
