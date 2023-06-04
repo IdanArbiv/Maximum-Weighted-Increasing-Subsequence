@@ -85,9 +85,10 @@ ranked_input={
 
 This is a visualization of one of the heaviest chains for this input:
 ![image](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/14229b0e-f641-4efd-9a94-53c34b1681f1)
+![algorithm_visualization](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/f9d703d6-2a77-4b22-961c-1d7e0b1b637d)
 
 
-2. Now we will present a naive approach to solving the main problem-
+# Naive approach to solving the main problem-
 
 ## Input –
 list- ([x_1,y_1,w_1 ],[x_2,y_2,w_2 ],… ,[x_n 〖,y〗_n,w_n ]) s.t w_1=w_2=⋯=w_n=1
@@ -107,7 +108,7 @@ The time complexity of this algorithm is O(2^n  * n^2), where n is the length of
 The space complexity of this algorithm is O(2^n  + n^2), where n is the length of the input.  The 2^n term comes from the storage of all subsets, and the n^2 term comes from the space required by the weighted_increasing_subsequence algorithm. 
 In conclusion, this algorithm has a high time and space complexity due to its exhaustive search of the solution space. However, for small inputs, it can be practical and guarantees finding the optimal solution.
 
-3. Now we will present a heuristic approach to solving the main problem-
+# Heuristic approach to solving the main problem-
 
 ## Input –
 1. list- ([x_1,y_1,w_1 ],[x_2,y_2,w_2 ],… ,[x_n 〖,y〗_n,w_n ]) s.t w_1=w_2=⋯=w_n=1
@@ -136,6 +137,8 @@ Let's break down the steps of the algorithm:
 4. Iterative processing: The algorithm repeats the above two steps iteratively until all points have been processed.
 
 5. Output: At the end of this process, it returns two lists. The 'changed_items' list includes points whose weights have been increased and the 'modified_list' includes all points with their final weights.
+
+![output](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/f037f301-cdb7-496b-ae2b-375ecaf52fd5)
 
 ## Time and Space Complexity Analysis:
 The time complexity of the heuristic_algo algorithm is mainly determined by the nested loops in both algorithms and the list operations inside them, such as index and remove, which have a time complexity of O(n) in Python. As such, the overall time complexity is approximately O(n^2), where n is the length of the input_list. 
