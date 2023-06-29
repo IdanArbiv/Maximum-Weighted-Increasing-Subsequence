@@ -1,20 +1,16 @@
 # Maximum-Weighted-Increasing-Subsequence
 
 # Problem Statement:
-We have a problem cell, which is defined as a collection (or collections) of points on a plane. Each point in the problem cell is represented as a tuple (x,y), where x and y are coordinates on the plane. The sequence in which the points appear in the cell is important and they should not be sorted.
+We have a problem cell, which is defined as a collection (or collections) of points on a plane. Each point in the problem cell is represented as a tuple (x,y), where x and y are coordinates on the plane.
 ## Definitions:
-1. A point (a,b) is said to be greater than another point (x,y) if and only if both a > x and b > y.
+1. A point (a,b) is said to be greater than another point (x,y) if and only if both                      a > x and b > y.
 2. A chain is a series of points where each subsequent point in the series is greater than the previous point.
 3. If points are assigned weights, then the weight of a chain is the sum of the weights of the points in the chain. By default, each point in a problem cell has a weight of 1.
 4. The maximum chain weight initially, denoted as W, is the weight of the heaviest chain that can be formed from the points in the problem cell.
 
+
 ## Task:
 Our task is to design an algorithm that can selectively increase the weight of certain points from 1 to 2 while ensuring that the weight of the chain with the maximum weight remains the same as the original W. In other words, after the weights of certain points have been increased, it should still hold that all potential chains formed from the points in the problem cell have a weight less than or equal to W.
-
-## Constraints:
-1. It's crucial to note that the sequence of points given in the problem cell should not be sorted. The order of points matters and must be maintained.
-2. Chains should strictly follow the sequence of points as given in the input. You can't rearrange the points to form a chain.
-3. The number of points in a problem cell is between 1 and 100000.
 
 ## Input:
 An array of tuples where each tuple represents a point with two coordinates (x,y). For example: [(1,1),(2,2),(3,3)]
@@ -23,14 +19,23 @@ An array of tuples where each tuple represents a point with two coordinates (x,y
 A list of points with their modified weights that satisfy the condition of the problem. For example, if no weights can be changed while maintaining the maximum chain weight, the output should be the same as the input.
 
 # Research Question:
-Given the constraints of a problem cell, how can we effectively develop an algorithm to identify and increase the weight of specific points from 1 to 2, while preserving the maximum chain weight (W) and the sequence of the points in the problem cell?
+Given the problem cell, how can we effectively develop an algorithm to identify and increase the weight of specific points from 1 to 2, while preserving the maximum chain weight (W) and the sequence of the points in the problem cell?
 
 ## Introduction:
 The complexity of geometric problems has always held an unparalleled fascination in the field of computational geometry. Among the myriad of these problems, one specific problem has gained significant interest: managing the weights of points in a problem cell on a plane while maintaining a given maximum chain weight. This unique challenge resides in a special area of study where mathematics, computer science, and sequence analysis intersect.
 In this context, a problem cell is a collection of ordered points on a plane, each defined by a tuple of two coordinates (x,y). Further adding to the complexity of this problem is the notion of 'chains'—an ordered series of points where each subsequent point is greater than the previous one according to a predefined criterion—and the concept of 'weight'. Each point in a problem cell carries an initial weight, and the weight of a chain is calculated as the sum of the weights of its constituent points.
 Our task, and the focus of this research, is to design an effective algorithm capable of selectively increasing the weight of certain points within the cell from 1 to 2, whilst ensuring the maximum chain weight remains constant. This intricately nuanced problem draws on a variety of techniques and principles rooted in graph theory, sequence analysis, and optimization.
-In the pursuit of a solution, this research is guided by specific constraints: the sequence of points within the problem cell must not be sorted, chains must follow the original sequence of points, and the number of points in a problem cell lies between 1 and 100000.
-By examining this problem and developing a robust algorithm, we hope to contribute significantly to the field of computational geometry. We believe this study will not only address this specific problem but also inspire innovative thinking and methodologies that could be applied to similar problems within this fascinating domain of research.
+By examining this problem and developing a heuristic algorithm, we hope to contribute significantly to the field of computational geometry. We believe this study will not only address this specific problem but also inspire innovative thinking and methodologies that could be applied to similar problems within this fascinating domain of research.
+
+# First step - Reduction
+We will show a reduction to a similar problem and we will solve this problem.
+First, let’s define the new problem.
+The new problem is just like the original problem except that we are also concerned with a new dimension – a time dimension, which means that if we have our original list of points, the order in the list matters, and it’s forbidden to sort the points.
+In the context of our project, we have developed a heuristic approach to address a three-dimensional problem. In this problem, each point possesses not only the traditional x and y coordinates but also a time component that indicates its position in the temporal dimension.
+The original problem, on the other hand, only considers the x and y coordinates of each point, without accounting for their temporal order within the array. Consequently, time is not a relevant factor in the original problem formulation.
+To establish a meaningful connection between the original problem and the temporal dimension, we performed a reduction technique. This technique involved sorting the array based on the y coordinate and substituting the y coordinate with the x coordinate.
+By implementing this reduction, we effectively transformed the points in the Euclidean plane to lie solely on the straight line y=x. While these points maintain their geometric significance within the coordinate system, they now also possess temporal meaning, as their order of appearance in the array corresponds to their position in time.
+
  
 ## Algorithms:
 
@@ -63,8 +68,8 @@ In detail, for each point (x,y,w) in the reversed list:
 5. If (x,y) is not less than (x1,y1), the algorithm proceeds to the next point.
   Once the maximum chain weight for the point (x,y) is finalized (after considering all points that come after it in the reversed list), the algorithm moves to the next point in the reversed list.
   Finally, the algorithm returns the overall maximum chain weight (which is the maximum of all maximum chain weights for individual points) and the dictionary that stores the maximum chain weight for each point in the list.
-  
-![algorithm_visualization](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/f9d703d6-2a77-4b22-961c-1d7e0b1b637d)
+
+![algorithm_visualization (1)](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/73efe423-ed9b-4ec8-9a67-4dc581de1958)
 
 
 ## Time and Space Complexity Analysis:
@@ -88,7 +93,8 @@ ranked_input={
 
 This is a visualization of one of the heaviest chains for this input:
 
-![image](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/14229b0e-f641-4efd-9a94-53c34b1681f1)
+![image](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/25361826-6ecc-40d4-904d-4880a6b1d4f6)
+
 
 
 # Naive approach to solving the main problem-
@@ -156,7 +162,7 @@ In each layer, we go through the rank of each vertex and check if the ranked is 
 ![image](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/178584d9-e16b-4bd9-8b83-989cfa28b69c)
 
 # Results:
-![image](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/a687fddb-75d9-4c1d-b489-bc09c9a341e5)
+![image](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/8f9e6095-351e-4484-a3fe-5123e5c7dce6)
 
 # Heuristic Algorithm Results Report:
  In the results obtained from running the heuristic algorithm on various sample datasets (square and rhombus), several key observations can be made:
