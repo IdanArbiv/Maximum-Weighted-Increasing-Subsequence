@@ -153,7 +153,7 @@ Let's break down the steps of the algorithm:
 The time complexity of the heuristic_algo algorithm is mainly determined by the nested loops in both algorithms and the list operations inside them, such as index and remove, which have a time complexity of O(n) in Python. As such, the overall time complexity is approximately O(n^2), where n is the length of the input_list. 
 The space complexity is O(n) due to the storage required for the tmp_input_list, modified_list, and changed_items lists, and the space required for lowest_partial_order in the find_lowest_partial_order algorithm.
 
-![image](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/2e2810ee-2e83-41dc-a2a9-b416b21ba0f3)
+![image](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/dde8b6d4-5d43-4b42-b5c9-e1ecc332f5bb)
 
 ## Explain about steps 4 and 5 in the previous page:
 In each layer, we go through the rank of each vertex and check if the ranked is less than W if we found any vertex that this condition is met for which we increase its weight by 1. We will do this for every vertex that is in the same layer. If we find such a vertex in a layer, we will add 2 to the ranked of the vertices in the next layer, otherwise, we will only add 1. We will check the condition again and again until we reach the last layer and basically go through all the vertices in the graph.
@@ -165,15 +165,17 @@ In each layer, we go through the rank of each vertex and check if the ranked is 
 ![image](https://github.com/IdanArbiv/Maximum-Weighted-Increasing-Subsequence/assets/101040591/8f9e6095-351e-4484-a3fe-5123e5c7dce6)
 
 # Heuristic Algorithm Results Report:
- In the results obtained from running the heuristic algorithm on various sample datasets (square and rhombus), several key observations can be made:
+In the results obtained from running the heuristic algorithm on various sample datasets (square and rhombus), several key observations can be made:
 
-1. Maximum Weight of the Initial Chain: Each dataset has an initial maximum weight of the chain (W) determined from the original input. The values range from 17 to 44, representing the heaviest chain that can be formed from the initial points.
-2. Execution Time: The execution time of the algorithm for each dataset is provided in seconds. The algorithm demonstrates efficient performance across the different sample sizes, with execution times ranging from 0.008 to 0.885 seconds. This showcases the algorithm's ability to process large datasets quickly.
-3. Percentage of Items Changed: The algorithm succeeded in changing the weights of certain points from 1 to 2, selectively modifying a subset of the original points. The percentage of items changed varies across the datasets, ranging from approximately 13% to 17%. This demonstrates the algorithm's capability to identify and modify specific points while maintaining the maximum chain weight constraint.
+1. Maximum Weight of the Initial Chain: Each dataset has an initial maximum weight of the chain (W) determined from the original input. The values range from 48 to 195, representing the heaviest chain that can be formed from the initial points.
+2. Execution Time: The execution time of the algorithm for each dataset is provided in seconds. The algorithm demonstrates efficient performance across the different sample sizes, with execution times ranging from 0.016 to 0.812 seconds. This showcases the algorithm's ability to process large datasets quickly.
+3. Percentage of Items Changed: The algorithm succeeded in changing the weights of certain points from 1 to 2, selectively modifying a subset of the original points. The percentage of items changed varies across the datasets, ranging from approximately 10% to 20% on square data set and 5% to 12% on the rhombus data set. This demonstrates the algorithm's capability to identify and modify specific points while maintaining the maximum chain weight constraint. 
 4. Impact of Dataset Size: As the dataset size increases, the number of items successfully changed also increases. This behavior indicates the algorithm's effectiveness in selectively modifying point weights and achieving a desirable outcome, even with larger datasets.
+
 Overall, the heuristic algorithm exhibits promising performance in achieving its goal of selectively increasing point weights while preserving the maximum chain weight constraint. Although it is a heuristic algorithm and may not provide an optimal solution, it showcases efficiency and effectiveness in modifying point weights based on the given constraints.
 
 These results provide valuable insights into the algorithm's behavior and its potential application in scenarios where point weights need to be adjusted while maintaining the overall structure and properties of the chain. Further analysis and experimentation can be conducted to explore its performance on different types of datasets and evaluate its suitability for specific use cases.
+
 
 ## Comparison between Heuristic Algorithm and Naive Approach (optimal solution) on small data sets:
 We conducted a comparison between the two algorithms using a smaller input of up to 21 points. The naive algorithm's performance becomes unreasonable for larger inputs, so this restriction was necessary.
@@ -186,13 +188,14 @@ We randomly generated 21 points in two-dimensional space when each entry is in r
 We will now analyze the results from the graphs above:
 
 ## Test Results:
-Both algorithms were tested on varying subset sizes (1-22). Both showed similar outcomes for sizes ≤6, while heuristic algorithm was faster. For larger subset sizes, the naive approach identified more changeable weights, but at the cost of exponentially longer execution times.
+Both algorithms were tested on varying subset sizes (1-22). Both showed similar outcomes for sizes ≤6, while the heuristic algorithm was faster. For larger subset sizes, the naive approach identified more changeable weights, but at the cost of exponentially longer execution times.
 
 ## Performance:
-With a subset size of 22, naive approach took ~267.32 seconds, while heuristic approach was much faster at ~0.0001 seconds, maintaining its efficiency even for larger subsets.
+With a subset size of 22, the naive approach took ~267.32 seconds, while the heuristic approach was much faster at ~0.0001 seconds, maintaining its efficiency even for larger subsets.
 
-## Conclusion: 
+## Conclusion:
 The heuristic algorithm is more efficient, especially for large subsets, but it may not always provide the optimal solution. This exemplifies a trade-off between optimality and efficiency. For exact optimal solutions, the slower naive approach is suitable, but for larger data sets and efficiency, the heuristic approach is preferable.
+
 
 
 
